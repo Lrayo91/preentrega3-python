@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+
+{% extends "Entregable3/base.html" %}
+{% block title %}
+    Turnos
+{% endblock title %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Your meta description goes here" />
+        <meta name="keywords" content="your, meta, keywords, go, here" />
+        <title>Pacientes</title>
+    </head>
+    <body>
+        <!-- Page content-->
+        {% block content %}
+            <div class="container mt-5">
+                <div class="row">
+                    <h2 class="col-9">Listado turnos</h2>
+                    <a class="col-3 btn btn-primary" href="{% url 'turno:new_turno' %}">Agregar Turno</a>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Correo</th>
+                                <th>Matricula</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for turno in turnos %}
+                                <tr>
+                                    <td>{{ turno.fecha }}</td>
+                                    <td>{{ turno.hora }}</td>
+                                    <td>{{ turno.mailPaciente }}</td>
+                                    <td>{{ turno.matriculaMedico }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </div>
+                </div>
+
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+            {% endblock content %}
+        </body>
+    </html>
